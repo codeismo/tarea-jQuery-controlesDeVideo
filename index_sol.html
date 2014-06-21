@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Tarea 4</title>
+		<link rel="stylesheet" href="estilos.css"/>
+		<style>
+			.sombras {
+				/*sombras*/
+				-webkit-box-shadow: 0px 0px 5px 3px #333;
+				-moz-box-shadow: 0px 0px 5px 3px #333;
+				-o-box-shadow: 0px 0px 5px 3px #333;
+				box-shadow: 0px 0px 5px 3px white;
+			}
+		</style>
+		<script src="javascript/jquery-1.10.2.min.js"></script>
+		<script>
+			$(function(){
+			    //obtengo el botón de reproducir, el boton de pausa, el video, la caja del video y de estado del video
+			    var reproducir = $("#boton-reproducir");
+			    var pausar = $("#boton-pausa");	
+			    var elVideo = $("video")[0];
+			    var cajaVideo = $("#video");	
+			    var estadoVideo = $("#estado-video");
+			    	    
+			    //escucho el click en el boton de reproducir
+			    reproducir.click(function(){
+			        //se da play al video
+                    elVideo.play();
+                    //se agragan sombras a la caj del video
+                    cajaVideo.addClass("sombras");
+                    //cambio el estado del video
+                    estadoVideo.html("Video Activo");
+			    });
+			                    
+                //escucho el click en el boton de pausa
+                pausar.click(function(){
+                    //se pausa el video
+                    elVideo.pause();
+                    //se remueven sombras a la cajs del video
+                    cajaVideo.removeClass("sombras");
+                    //cambio el estado del video
+                    estadoVideo.html("Video Pausado");
+                });
+			});					
+		</script>
+	</head>
+	<body>
+
+		<div id="contenedor">
+
+			<video id="video">
+				<source src="videos/gato.mp4" type="video/mp4" />
+				<source src="videos/gato.ogg" type="video/ogg" />
+				<source src="videos/gato.webm" type="video/webm" />
+				Tu navegador no soporta video nativo
+			</video>
+
+			<p id="estado-video" >
+				Video inactivo
+			</p>
+
+			<p id="controles">
+				<a id="boton-reproducir">Reproducir</a>
+				<a id="boton-pausa">Pausa</a>
+			</p>
+
+		</div>
+	</body>
+</html>
